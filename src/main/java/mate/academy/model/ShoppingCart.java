@@ -8,6 +8,7 @@ import jakarta.persistence.MapsId;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -17,7 +18,7 @@ public class ShoppingCart {
     private Long id;
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "shopping_cart_id")
-    private List<Ticket> ticketList;
+    private List<Ticket> ticketList = new ArrayList<>();
     @OneToOne
     @MapsId
     @JoinColumn(name = "id")
@@ -33,10 +34,6 @@ public class ShoppingCart {
 
     public List<Ticket> getTicketList() {
         return ticketList;
-    }
-
-    public void setTicketList(List<Ticket> ticketList) {
-        this.ticketList = ticketList;
     }
 
     public User getUser() {

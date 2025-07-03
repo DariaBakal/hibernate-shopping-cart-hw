@@ -64,12 +64,12 @@ public class Main {
 
         AuthenticationService authenticationService = (AuthenticationService) injector
                 .getInstance(AuthenticationService.class);
-        User newUser = null;
+        User newUser;
         try {
             newUser = authenticationService.register(
                     "test@gmail.com", "password");
         } catch (RegistrationException e) {
-            throw new RuntimeException("Can't register user: " + newUser, e);
+            throw new RuntimeException("Can't register user", e);
         }
         ShoppingCartService shoppingCartService = (ShoppingCartService) injector
                 .getInstance(ShoppingCartService.class);
